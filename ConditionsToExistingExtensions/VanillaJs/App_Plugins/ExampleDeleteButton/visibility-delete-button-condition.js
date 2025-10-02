@@ -69,8 +69,8 @@ export class VisibilityDeleteButtonCondition extends UmbConditionBase {
             return;
         }
 
-        //When the content type alias is 'HomepageTest', the delete button should not be visible.
-        if (contentTypeAlias === 'HomepageTest') {
+        //When the content type alias is 'Homepage', the delete button should not be visible.
+        if (contentTypeAlias === 'Homepage') {
             this.permitted = false;
         } else {
             this.permitted = true;
