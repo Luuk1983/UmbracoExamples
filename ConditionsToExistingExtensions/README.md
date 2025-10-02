@@ -2,8 +2,6 @@
 
 **Created**: 02-10-2025 | **Last revision:** 02-10-2025 | **Umbraco version:** 16.1.1
 
-
-
 This is an example on how to register a custom condition to an existing extension. This is useful for when you need to change the behavior of existing extensions, especially the extensions that ship with a default Umbraco installation.
 
 The example contains a condition that removes the delete button (or actually the 'trash' button) from the menu of a document if a condition is met. In the example, it will remove the delete button if the document type alias of the document is `Homepage`. Ofcourse in real life, the logic would probably be more complex, but this gives a good idea about the functionality.
@@ -27,7 +25,7 @@ To add a condition to an existing extension, you need to do the following
 I created an example in vanilla javascript, but I will also add two additional examples in the future. One in typescript and one that uses javascript to register the manifest.
 
 ## Vanilla javascript example
-In most scenarios I recommend to use typescript for it's strong typed types and it's compile time check of the code. However, sometimes you just need something to work and it doesn't need to be pretty. In that case, vanilla (or plain) javascript is fine. The VanillaJs folder contains the example written entirely in vanilla Javascript, so it does not need any compilation.
+In most scenarios I recommend to use typescript for it's strong typed types and it's compile time check of the code. However, sometimes you just need something to work and it doesn't need to be pretty. In that case, vanilla (or plain) javascript is fine. The [VanillaJs folder](src/VanillaJs/) contains an example written entirely in vanilla Javascript, so it does not need any compilation.
 
 * The file [visibility-delete-button-condition.js](VanillaJs/App_Plugins/ExampleDeleteButton/visibility-delete-button-condition.js) contains the actual condition. This condition checks if the current entity is a document and tries to get document type of the that document. If the content type is the homepage, the condition is false, effectively hiding the trash/delete button.
 * The file [startup.js](VanillaJs/App_Plugins/ExampleDeleteButton/startup.js) contains the logic to register our custom condition to the existing Umbraco trash/delete button.
