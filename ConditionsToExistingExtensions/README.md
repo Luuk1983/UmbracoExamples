@@ -27,9 +27,9 @@ I created an example in vanilla javascript, but I will also add two additional e
 ## Vanilla javascript example
 In most scenarios I recommend to use typescript for it's strong typed types and it's compile time check of the code. However, sometimes you just need something to work and it doesn't need to be pretty. In that case, vanilla (or plain) javascript is fine. The [VanillaJs folder](src/VanillaJs/) contains an example written entirely in vanilla Javascript, so it does not need any compilation.
 
-* The file [visibility-delete-button-condition.js](VanillaJs/App_Plugins/ExampleDeleteButton/visibility-delete-button-condition.js) contains the actual condition. This condition checks if the current entity is a document and tries to get document type of the that document. If the content type is the homepage, the condition is false, effectively hiding the trash/delete button.
-* The file [startup.js](VanillaJs/App_Plugins/ExampleDeleteButton/startup.js) contains the logic to register our custom condition to the existing Umbraco trash/delete button.
-* The file [umbraco-package.json](VanillaJs/App_Plugins/ExampleDeleteButton/umbraco-package.json) contains the manifest for the condition and the startup extensions.
+* The file [visibility-delete-button-condition.js](src/VanillaJs/App_Plugins/ExampleDeleteButton/visibility-delete-button-condition.js) contains the actual condition. This condition checks if the current entity is a document and tries to get document type of the that document. If the content type is the homepage, the condition is false, effectively hiding the trash/delete button.
+* The file [startup.js](src/VanillaJs/App_Plugins/ExampleDeleteButton/startup.js) contains the logic to register our custom condition to the existing Umbraco trash/delete button.
+* The file [umbraco-package.json](src/VanillaJs/App_Plugins/ExampleDeleteButton/umbraco-package.json) contains the manifest for the condition and the startup extensions.
 ### How to use it yourself?
 If you want to try the code yourself, you can just copy the App_Plugins folder to the wwwroot folder of your Umbraco instance and it will work. Ofcourse you may need to change the document type alias that the condition checks on, but that is it!
 
