@@ -8,13 +8,13 @@
       "type": "condition",
       "name": "Visibility delete button condition",
       "alias": "Luuk.Examples.Condition.VisibilityDeleteButton",
-      "js": "/App_Plugins/ExampleDeleteButton/visibility-delete-button-condition.DYvDpHL0.js"
+      "js": "/App_Plugins/ExampleDeleteButton/visibility-delete-button-condition.js"
     },
     {
       "type": "backofficeEntryPoint",
       "name": "Delete button visibility registration",
       "alias": "Luuk.Examples.EntryPoint",
-      "js": "/App_Plugins/ExampleDeleteButton/startup.l0sNRNKZ.js"
+      "js": "/App_Plugins/ExampleDeleteButton/startup.js"
     }
   ]
 }
