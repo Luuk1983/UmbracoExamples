@@ -1,0 +1,14 @@
+{
+  "name": "@luuk-peters/delete-button-example",
+  "private": true,
+  "version": "16.0.0",
+  "type": "module",
+  "scripts": {
+    "watch": "tsc --watch",
+    "build": "tsc"
+  },
+  "devDependencies": {
+    "@umbraco-cms/backoffice": "^*",
+    "typescript": "~5.6.2"
+  }
+}

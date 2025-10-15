@@ -1,0 +1,20 @@
+{
+  "$schema": "../../umbraco-package-schema.json",
+  "id": "Luuk.Examples.AddConditionToExistingExtension",
+  "name": "An example on how to add a condition to an existing extension",
+  "version": "16.0.0",
+  "extensions": [
+    {
+      "type": "condition",
+      "name": "Visibility delete button condition",
+      "alias": "Luuk.Examples.Condition.VisibilityDeleteButton",
+      "js": "/App_Plugins/ExampleDeleteButton/visibility-delete-button-condition.DYvDpHL0.js"
+    },
+    {
+      "type": "backofficeEntryPoint",
+      "name": "Delete button visibility registration",
+      "alias": "Luuk.Examples.EntryPoint",
+      "js": "/App_Plugins/ExampleDeleteButton/startup.l0sNRNKZ.js"
+    }
+  ]
+}
