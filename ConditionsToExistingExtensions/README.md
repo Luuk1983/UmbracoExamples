@@ -30,6 +30,7 @@ In most scenarios I recommend to use typescript for it's strong typed types and 
 * The file [visibility-delete-button-condition.js](src/VanillaJs/wwwroot/App_Plugins/ExampleDeleteButton/visibility-delete-button-condition.js) contains the actual condition. This condition checks if the current entity is a document and tries to get document type of the that document. If the content type is the homepage, the condition is false, effectively hiding the trash/delete button.
 * The file [startup.js](src/VanillaJs/wwwroot/App_Plugins/ExampleDeleteButton/startup.js) contains the logic to register our custom condition to the existing Umbraco trash/delete button.
 * The file [umbraco-package.json](src/VanillaJs/wwwroot/App_Plugins/ExampleDeleteButton/umbraco-package.json) contains the manifest for the condition and the startup extensions.
+
 ### How to use it yourself?
 #### Prerequisites
 * You need an Umbraco 16+ instance to test this on (although it will probably also work in 15).
@@ -42,7 +43,11 @@ In most scenarios I recommend to use typescript for it's strong typed types and 
 
 To be honest, if you are already messing with npm and typescript I would recommend to go for the advances/bundle approach that makes it so much easier to create a clean architecture. But this example is simpeler, so I decided to add it.
 
-The
+* The [Backoffice folder](src/TypeScript/Backoffice/) contains the uncompiled typescript files. These files get compiled to the [wwwroot folder](src/TypeScript/wwwroot/) where the umbraco-package.json lives.
+* The file [visibility-delete-button-condition.ts](src/TypeScript/Backoffice/src/visibility-delete-button-condition.ts) contains the actual condition. This condition checks if the current entity is a document and tries to get document type of the that document. If the content type is the homepage, the condition is false, effectively hiding the trash/delete button.
+* The file [startup.ts](src/TypeScript/Backoffice/src/startup.ts) contains the logic to register our custom condition to the existing Umbraco trash/delete button.
+* The file [umbraco-package.json](src/TypeScript/wwwroot/App_Plugins/ExampleDeleteButton/umbraco-package.json) contains the manifest for the condition and the startup extensions.
+
 ### How to use it yourself?
 #### Prerequisites
 * You need an Umbraco 16+ instance to test this on (although it will probably also work in 15).
