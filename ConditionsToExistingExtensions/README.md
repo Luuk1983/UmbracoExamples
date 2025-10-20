@@ -1,6 +1,6 @@
 # Example: Add custom condition to existing extension
 
-**Created**: 02-10-2025 | **Last revision:** 15-10-2025 | **Umbraco version:** 16.1.1
+**Created**: 02-10-2025 | **Last revision:** 20-10-2025 | **Umbraco version:** 16.1.1
 
 This is an example on how to register a custom condition to an existing extension. This is useful for when you need to change the behavior of existing extensions, especially the extensions that ship with a default Umbraco installation.
 
@@ -22,10 +22,13 @@ To add a condition to an existing extension, you need to do the following
 2. Register it using a manifest. See the Umbraco docs on [what a manifest is](https://docs.umbraco.com/umbraco-cms/customizing/extending-overview/extension-registry/extension-manifest).
 3. Append the custom condition to an existing extension by alias.
 
-I created an example in vanilla javascript, but I will also add two additional examples in the future. One in typescript and one that uses javascript to register the manifest.
+I created three version of this example:
+* A vanilla Javascript example. I recommend this if you have a very small extension without too much complex logic.
+* A TypeScript example. This is the same example as the vanilla javascript example, except that the javascript files are strong types with typescript. It's just for showing what's possible, but I would recommend the advanced example if you need to use npm anyway.
+* An advanced example. Here we create the manifest in code and create a [bundle](https://docs.umbraco.com/umbraco-cms/customizing/extending-overview/extension-types/bundle) instead of seperate files.
 
 ## Vanilla javascript example
-In most scenarios I recommend to use typescript for it's strong typed types and it's compile time checks of the code. However, sometimes you just need something to work and it doesn't need to be pretty, or the work to setup a vite build pipeline is worth the effort. In that case, vanilla (or plain) javascript is fine. The [VanillaJs folder](src/VanillaJs/) contains an example written entirely in vanilla Javascript, so it does not need any compilation.
+Sometimes you just need something to work and it doesn't need to be pretty, or the work to setup a vite build pipeline is worth the effort. In that case, vanilla (or plain) javascript is fine. I recommend this is  The [VanillaJs folder](src/VanillaJs/) contains an example written entirely in vanilla Javascript, so it does not need any compilation.
 
 * The file [visibility-delete-button-condition.js](src/VanillaJs/wwwroot/App_Plugins/ExampleDeleteButton/visibility-delete-button-condition.js) contains the actual condition. This condition checks if the current entity is a document and tries to get document type of the that document. If the content type is the homepage, the condition is false, effectively hiding the trash/delete button.
 * The file [startup.js](src/VanillaJs/wwwroot/App_Plugins/ExampleDeleteButton/startup.js) contains the logic to register our custom condition to the existing Umbraco trash/delete button.
@@ -41,7 +44,7 @@ If you want to try the code yourself, you can just copy the wwwroot folder to th
 ## Typescript example
 In most scenarios I recommend to use typescript for it's strong typed types and it's compile time checks of the code. This example is in the [TypeScript folder](src/TypeScript/) and is in essence the same example as the vanilla javascript code. The difference is that the source files are typescript files that need to be compiled.
 
-To be honest, if you are already messing with npm and typescript I would recommend to go for the advances/bundle approach that makes it so much easier to create a clean architecture. But this example is simpeler, so I decided to add it.
+To be honest, if you are already working with npm and typescript I would recommend to go for the advances/bundle approach that makes it so much easier to create a clean architecture. But this example is simpeler, so I decided to add it.
 
 * The [Backoffice folder](src/TypeScript/Backoffice/) contains the uncompiled typescript files. These files get compiled to the [wwwroot folder](src/TypeScript/wwwroot/) where the umbraco-package.json lives.
 * The file [visibility-delete-button-condition.ts](src/TypeScript/Backoffice/src/visibility-delete-button-condition.ts) contains the actual condition. This condition checks if the current entity is a document and tries to get document type of the that document. If the content type is the homepage, the condition is false, effectively hiding the trash/delete button.
@@ -59,6 +62,19 @@ To be honest, if you are already messing with npm and typescript I would recomme
 3. In the context of that folder, execute the following command to install the required npm packages:  `npm ci`
 4. Once all packages are installed, build the typescript files by running the following command in the context of the same folder: `npm run build`.
 
+## Advances example (bundle approach)
+This example a [bundle](https://docs.umbraco.com/umbraco-cms/customizing/extending-overview/extension-types/bundle) extension and registers the manifests in code. Although this example only contains a single condition, you can see an architecture that makes it easy to seperate concerns and keep the umbraco-package.json clean. This approach is recommended for extensions that consist of many parts.
 
-## Advances example (bundle approach) (TBA)
-This example is not yet created. This will show a more advanced example using javascript to register the manifest and create a bundle so there is no need for the backoffice entry point.
+* The [Backoffice folder](src/Advanced/Backoffice/) contains all the code that is required. When compiled, these files are compiled to the wwwroot/App_Plugins/
+* The [public](src/Advanced/Backoffice/public/) folder gets copied over as-is and contains the umbraco-package.json file.
+
+### How to use it yourself?
+#### Prerequisites
+* You need an Umbraco 16+ instance to test this on (although it will probably also work in 15).
+* You need to have [Node 20.11](https://nodejs.org/en/download) or higher.
+
+#### How to get it to work
+1. Copy the contents of the [Advanced folder](src/Advanced) to the root of your local Umbraco instance folder.
+2. In your local Umbraco instance, navigate to the **Backoffice** folder. This is the folder that contains the **package.json** file.
+3. In the context of that folder, execute the following command to install the required npm packages: `npm ci`
+4. Once all packages are installed, build the typescript files by running the following command in the context of the same folder: `npm run build`. This should create the /wwwroot/App_Plugins/ExampleDeleteButton folder and it's content.

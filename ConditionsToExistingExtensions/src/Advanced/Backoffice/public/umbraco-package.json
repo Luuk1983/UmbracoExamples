@@ -1,0 +1,14 @@
+{
+  "$schema": "../../umbraco-package-schema.json",
+  "id": "Luuk.Examples.AddConditionToExistingExtension",
+  "name": "An example on how to add a condition to an existing extension",
+  "version": "16.0.0",
+  "extensions": [
+    {
+      "name": "ExtensionExampleBundle",
+      "alias": "Luuk.Examples.Bundle",
+      "type": "bundle",
+      "js": "/App_Plugins/ExampleDeleteButton/delete-button-example.js"
+    }
+  ]
+}
